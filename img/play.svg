@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- White circular background -->
+  <circle cx="24" cy="24" r="24" fill="white" />
+  <!-- Centered black triangle play icon -->
+  <polygon points="20,16 20,32 32,24" fill="black" />
+</svg>

@@ -1,0 +1,27 @@
+<svg width="220" height="300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .card-bg {
+      fill: #252525;
+    }
+    .title {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: white;
+    }
+    .desc {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      fill: #b3b3b3;
+    }
+  </style>
+
+  <rect x="0" y="0" width="220" height="300" rx="10" ry="10" class="card-bg" />
+
+  <image 
+    href="https://i.postimg.cc/gjPL7G48/pepsu-jpg.jpg" 
+    x="10" y="10" height="150" width="200" preserveAspectRatio="xMidYMid slice"/>
+
+  <text x="15" y="185" class="title">Iron Brotherhood</text>
+  <text x="15" y="210" class="desc">Power, dedication, and strength in every rep.</text>
+</svg>

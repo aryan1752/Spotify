@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <!-- Green Circle Background -->
+  <circle cx="24" cy="24" r="24" fill="#1ED760"/>
+
+  <!-- Rounded Black Play Icon -->
+  <path d="M20 16C20 16 20 16 20 16L20 32C20 32 20 32 20 32C20 32 20 32 20 32L32 24C32 24 32 24 32 24C32 24 32 24 32 24L20 16Z" fill="black" />
+</svg>
