@@ -26,7 +26,7 @@ body {
 }
 
 .right {
-    width: 75vw;
+    width: 100vw;
 }
 
 
@@ -85,7 +85,7 @@ body {
     justify-content: space-between;
     background-color: rgb(34 34 34);
 }
- 
+
 .header>* {
     padding: 20px;
 }
@@ -161,43 +161,53 @@ body {
 
 
 }
-.buttons >*{
+
+.buttons>* {
     margin: 0 12px;
 }
+
 .loginbtn {
-  background-color: white;
-  border-radius: 20px;
-  padding: 10px;
-  width: 79px;
-  cursor: pointer;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 79px;
+    cursor: pointer;
 
 }
+
 .loginbtn:hover {
     font-weight: bold;
     font-size: 16px;
 }
-.spotifyPlaylists{
-    
 
-}
 
 .playbar {
-    position: absolute;
-    bottom: 0;
-    background-color: #244f29;
-    width: 100%;
-    padding: 12px;
+    position: fixed;
+    bottom: 5px;
+    background-color: #dad5d5;
+    width: 60%;
+    height: 10px;
+    padding: 25px;
+    filter: invert(1);
+    border-radius: 15px;
 }
+.margin {
+    padding-bottom: 5%;
+}
+
 .songbuttons {
     display: flex;
-    
-    gap: 16px;
+    align-items: center;      /* vertical */
+    height: 100%;             /* or 100px or vh depending on context */
+    gap: 10px;
     padding-left: 40%;
-}   
- .close {
-        display: block;
-    }
-    .hamburger {
+}
+
+.close {
+    display: block;
+}
+
+.hamburger {
     display: none;
     cursor: pointer;
 }
@@ -207,4 +217,69 @@ body {
     justify-content: center;
     align-items: center;
     gap: 14px;
+}
+
+.songList {
+    height: 544px;
+    overflow: auto;
+    margin-bottom: 44px;
+}
+
+.songList ul {
+    padding: 0 5px;
+
+}
+
+.songList ul li {
+    list-style-type: decimal;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    padding: 12px 0;
+    border: 1px solid white;
+    margin: 12px;
+    padding: 13px;
+    border-radius: 5px;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+}
+
+.small-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.play-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+    width: 30px;
+    height: 30px;
+}
+
+.songList .info {
+    font-size: 13px;
+    width: 344px;
+}
+.seekbar {
+    height: 2px;
+    width: 95%;
+    background: black;
+    position: absolute;
+    bottom: 0;
+    border-radius: 12px;
+    justify-content: center;
+    
+}
+.circle{
+    width: 13px;
+    height: 13px;
+    position: relative;
+    background-color: black;
+    border-radius: 6px;
+    bottom: 7px;
+    left: 0%;
+    transition: left 0.5s;
 }
