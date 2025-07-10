@@ -1,6 +1,14 @@
+let currentSong = new Audio(); // global audio object
+let currentIndex = 0;
+let songs = [];
+
 const playMusic = (track) => {
-    let audio = new Audio("/songs/" + track);
-    audio.play();
+    currentSong.src = "/songs/" + track;
+    currentSong.play();
+    document.getElementById("play").src = "img/pause.svg";
+    document.querySelector(".songinfo").innerHTML=""
+    document.querySelector(".songtime").innerHTML="00:00/00:00"
+    
 };
 
 async function getSongs() {
@@ -22,13 +30,13 @@ async function getSongs() {
 };
 
 async function main() {
-    let songs = await getSongs();
+    songs = await getSongs();
     console.log(songs);
 
     let songUL = document.querySelector(".songList ul");
-    songUL.innerHTML = ""; // Clear the existing list
+    songUL.innerHTML = "";
 
-    songs.forEach(song => {
+    songs.forEach((song, index) => {
         let li = document.createElement("li");
 
         li.innerHTML = `
@@ -40,17 +48,42 @@ async function main() {
             <img src="img/play.svg" alt="play" class="play-group">
         `;
 
-        // Click event for playing the song
+        // Play this song on click
         li.addEventListener("click", () => {
-            console.log("Playing:", song);
+            currentIndex = index;
             playMusic(song);
         });
 
         songUL.appendChild(li);
     });
 
-    // Optional: auto-play first song
-    // playMusic(songs[0]);
+    // Play/pause toggle
+    let playBtn = document.getElementById("play");
+    playBtn.addEventListener("click", () => {
+        if (currentSong.paused) {
+            currentSong.play();
+            playBtn.src = "img/pause.svg";
+        } else {
+            currentSong.pause();
+            playBtn.src = "img/play.svg";
+        }
+    });
+
+    // Next button
+    document.getElementById("next").addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % songs.length;
+        playMusic(songs[currentIndex]);
+    });
+
+    // Previous button
+    document.getElementById("previous").addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+        playMusic(songs[currentIndex]);
+    });
+
+    // Optional: auto-load first song
+    currentSong.src = "/songs/" + songs[0];
+    currentIndex = 0;
 }
 
 main();
