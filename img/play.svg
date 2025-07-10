@@ -1,6 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <!-- White circular background -->
-  <circle cx="24" cy="24" r="24" fill="white" />
-  <!-- Centered black triangle play icon -->
-  <polygon points="20,16 20,32 32,24" fill="black" />
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black circle outline -->
+  <circle cx="20" cy="20" r="19" fill="none" stroke="black" stroke-width="2"/>
+
+  <!-- Black play symbol -->
+  <polygon points="16,12 28,20 16,28" fill="black"/>
 </svg>
+

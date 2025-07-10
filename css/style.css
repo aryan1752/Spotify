@@ -167,8 +167,8 @@ body {
 .playbar {
     position: fixed;
     bottom: 5px;
-    left: 26.5vw; /* aligns with the right div (which starts after 25vw) */
-    width: 71.5vw; /* same width as .right (100vw - 25vw left sidebar) */
+    left: 26.5vw; /* aligns with the right div which starts after 25vw */
+    width: 72vw; /* same width as .right 100vw - 25vw+3vw left sidebar */
     background-color: #dad5d5;
     padding: 10px 20px;
     filter: invert(1);
@@ -210,6 +210,10 @@ body {
     align-items: center;
     justify-content: center;
     gap: 16px;
+}
+.songinfo, .songtime{
+    color: black;
+    padding: 0px 12px;
 }
 
 .songbuttons img {
@@ -297,6 +301,7 @@ body {
     margin-left: auto;
     width: 30px;
     height: 30px;
+    filter: invert(1);
 }
 
 .songList .info {

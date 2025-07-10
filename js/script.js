@@ -6,9 +6,8 @@ const playMusic = (track) => {
     currentSong.src = "/songs/" + track;
     currentSong.play();
     document.getElementById("play").src = "img/pause.svg";
-    document.querySelector(".songinfo").innerHTML=track
-    document.querySelector(".songtime").innerHTML="00:00/00:00"
-    
+    document.querySelector(".songinfo").innerHTML = track;
+    document.querySelector(".songtime").innerHTML = "00:00/00:00";
 };
 
 async function getSongs() {
@@ -28,6 +27,12 @@ async function getSongs() {
 
     return songs;
 };
+
+function secondsToMinutesSeconds(seconds) {
+    let mins = Math.floor(seconds / 60);
+    let secs = Math.floor(seconds % 60);
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+}
 
 async function main() {
     songs = await getSongs();
@@ -84,6 +89,12 @@ async function main() {
     // Optional: auto-load first song
     currentSong.src = "/songs/" + songs[0];
     currentIndex = 0;
+
+    // ✅ FIXED: Correct selector and function usage
+    currentSong.addEventListener("timeupdate", () => {
+        document.querySelector(".songtime").innerHTML =
+            `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
+    });
 }
 
 main();
