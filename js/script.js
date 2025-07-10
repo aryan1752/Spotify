@@ -6,7 +6,7 @@ const playMusic = (track) => {
     currentSong.src = "/songs/" + track;
     currentSong.play();
     document.getElementById("play").src = "img/pause.svg";
-    document.querySelector(".songinfo").innerHTML=""
+    document.querySelector(".songinfo").innerHTML=track
     document.querySelector(".songtime").innerHTML="00:00/00:00"
     
 };

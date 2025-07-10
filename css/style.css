@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-
 :root {
     --a: 0;
 }
@@ -9,10 +8,6 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-}
-
-.close {
-    display: none;
 }
 
 body {
@@ -27,9 +22,9 @@ body {
 
 .right {
     width: 100vw;
+    margin: 16px 0;
+    position: relative;
 }
-
-
 
 .home ul li {
     display: flex;
@@ -68,16 +63,10 @@ body {
     position: absolute;
     bottom: 0;
     padding: 10px 0;
-
 }
 
 .footer a {
     color: grey;
-}
-
-.right {
-    margin: 16px 0;
-    position: relative;
 }
 
 .header {
@@ -86,7 +75,7 @@ body {
     background-color: rgb(34 34 34);
 }
 
-.header>* {
+.header > * {
     padding: 20px;
 }
 
@@ -113,7 +102,7 @@ body {
     border-radius: 5px;
     background-color: #252525;
     position: relative;
-    transition: all .9s;
+    transition: all 0.9s;
 }
 
 .card:hover {
@@ -122,7 +111,7 @@ body {
     --a: 1;
 }
 
-.card>* {
+.card > * {
     padding-top: 10px;
 }
 
@@ -148,7 +137,6 @@ body {
 .signupbtn {
     background-color: rgb(34 34 34);
     color: rgb(114, 111, 111);
-    font-style: bold;
     border: none;
     outline: none;
     cursor: pointer;
@@ -157,12 +145,9 @@ body {
 .signupbtn:hover {
     font-size: 1.01rem;
     color: white;
-
-
-
 }
 
-.buttons>* {
+.buttons > * {
     margin: 0 12px;
 }
 
@@ -172,7 +157,6 @@ body {
     padding: 10px;
     width: 79px;
     cursor: pointer;
-
 }
 
 .loginbtn:hover {
@@ -180,27 +164,86 @@ body {
     font-size: 16px;
 }
 
-
 .playbar {
     position: fixed;
     bottom: 5px;
+    left: 26.5vw; /* aligns with the right div (which starts after 25vw) */
+    width: 71.5vw; /* same width as .right (100vw - 25vw left sidebar) */
     background-color: #dad5d5;
-    width: 60%;
-    height: 10px;
-    padding: 25px;
+    padding: 10px 20px;
     filter: invert(1);
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    box-sizing: border-box;
+    z-index: 10;
 }
-.margin {
-    padding-bottom: 5%;
+
+
+
+.abovebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.songinfo {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
+}
+
+.songtime {
+    font-family: monospace;
+    font-size: 11px;
+    opacity: 0.8;
 }
 
 .songbuttons {
     display: flex;
-    align-items: center;      /* vertical */
-    height: 100%;             /* or 100px or vh depending on context */
-    gap: 10px;
-    padding-left: 40%;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.songbuttons img {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+}
+
+.seekbar {
+    height: 4px;
+    width: 100%;
+    background: black;
+    position: relative;
+    border-radius: 12px;
+    margin-top: 4px;
+    box-sizing: border-box;
+}
+
+
+
+.circle {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-color: black;
+    border-radius: 50%;
+    top: -3.5px;
+    left: 0%;
+    transition: left 0.5s;
+}
+
+/* Others */
+.margin {
+    padding-bottom: 5%;
 }
 
 .close {
@@ -227,7 +270,6 @@ body {
 
 .songList ul {
     padding: 0 5px;
-
 }
 
 .songList ul li {
@@ -235,13 +277,11 @@ body {
     display: flex;
     gap: 5px;
     cursor: pointer;
-    padding: 12px 0;
     border: 1px solid white;
     margin: 12px;
-    padding: 13px;
+    padding: 10px;
     border-radius: 5px;
     align-items: center;
-    padding: 10px;
     position: relative;
 }
 
@@ -262,28 +302,4 @@ body {
 .songList .info {
     font-size: 13px;
     width: 344px;
-}
-.seekbar {
-    height: 2px;
-    width: 95%;
-    background: black;
-    position: absolute;
-    bottom: 0;
-    border-radius: 12px;
-    justify-content: center;
-    
-}
-.circle{
-    width: 13px;
-    height: 13px;
-    position: relative;
-    background-color: black;
-    border-radius: 6px;
-    bottom: 7px;
-    left: 0%;
-    transition: left 0.5s;
-}
-.abovebar{
-    display: flex;
-    
 }
