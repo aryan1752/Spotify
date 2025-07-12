@@ -2,11 +2,15 @@ let currentSong = new Audio(); // global audio object
 let currentIndex = 0;
 let songs = [];
 
-const playMusic = (track) => {
+const playMusic = (track,pause=false) => {
     currentSong.src = "/songs/" + track;
-    currentSong.play();
-    document.getElementById("play").src = "img/pause.svg";
-    document.querySelector(".songinfo").innerHTML = track;
+    if(pause){
+        currentSong.play()
+        play.src = "img/play.svg"
+    }
+
+
+    document.querySelector(".songinfo").innerHTML = decodeURI(track);
     document.querySelector(".songtime").innerHTML = "00:00/00:00";
 };
 
@@ -36,7 +40,8 @@ function secondsToMinutesSeconds(seconds) {
 
 async function main() {
     songs = await getSongs();
-    console.log(songs);
+    playMusic(songs[0],true)
+
 
     let songUL = document.querySelector(".songList ul");
     songUL.innerHTML = "";
@@ -90,11 +95,18 @@ async function main() {
     currentSong.src = "/songs/" + songs[0];
     currentIndex = 0;
 
-    // ✅ FIXED: Correct selector and function usage
-    currentSong.addEventListener("timeupdate", () => {
-        document.querySelector(".songtime").innerHTML =
-            `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
-    });
+   //listen for time update event
+    
+currentSong.addEventListener("timeupdate", () => {
+    console.log(currentSong.currentTime, currentSong.duration);
+
+    document.querySelector(".songtime").innerHTML =
+        `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
+
+    let percent = (currentSong.currentTime / currentSong.duration) * 100;
+    document.querySelector(".circle").style.left = percent + "%";
+});
+
 }
 
 main();
