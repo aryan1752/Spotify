@@ -75,7 +75,7 @@ body {
     background-color: rgb(34 34 34);
 }
 
-.header > * {
+.header>* {
     padding: 20px;
 }
 
@@ -111,7 +111,7 @@ body {
     --a: 1;
 }
 
-.card > * {
+.card>* {
     padding-top: 10px;
 }
 
@@ -147,7 +147,7 @@ body {
     color: white;
 }
 
-.buttons > * {
+.buttons>* {
     margin: 0 12px;
 }
 
@@ -167,8 +167,10 @@ body {
 .playbar {
     position: fixed;
     bottom: 5px;
-    left: 26.5vw; /* aligns with the right div which starts after 25vw */
-    width: 72vw; /* same width as .right 100vw - 25vw+3vw left sidebar */
+    left: 26.5vw;
+    /* aligns with the right div which starts after 25vw */
+    width: 72vw;
+    /* same width as .right 100vw - 25vw+3vw left sidebar */
     background-color: #dad5d5;
     padding: 10px 20px;
     filter: invert(1);
@@ -180,6 +182,7 @@ body {
     font-size: 13px;
     box-sizing: border-box;
     z-index: 10;
+    min-height: 40px;
 }
 
 
@@ -211,7 +214,9 @@ body {
     justify-content: center;
     gap: 16px;
 }
-.songinfo, .songtime{
+
+.songinfo,
+.songtime {
     color: black;
     padding: 0px 12px;
 }
@@ -230,6 +235,7 @@ body {
     border-radius: 12px;
     margin-top: 4px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 
@@ -251,7 +257,10 @@ body {
 }
 
 .close {
-    display: block;
+    position: absolute;
+    display: none;
+    left: 175px;
+    top: 11px;
 }
 
 .hamburger {
@@ -307,4 +316,60 @@ body {
 .songList .info {
     font-size: 13px;
     width: 344px;
+}
+.info div{
+    word-wrap: break-all;
+}
+.songinfo{
+    width: auto;
+}
+
+@media(max-width:1400px) {
+    .left {
+        background-color: #252525;
+        position: absolute;
+        left: -110px;
+        transition: all .3s;
+        z-index: 1;
+        width: 373px;
+    }
+
+    .right {
+        width: 100vw;
+        margin: 0;
+    }
+    .left.close img{
+     position: absolute;
+    left: 175px;
+    top: 11px;
+        
+    }
+
+    .playbar {
+        left: 0vw;
+        right: 0;
+        width: 88vw;
+    }
+    .seekbar{
+        width: 87vw;
+    }
+
+    .hamburger {
+        display: block;
+    }
+    .card {
+        width: 80vw;
+    }
+    .cardContainer{
+        justify-content: center;
+    }
+    .close{
+        display: block;
+    }
+    .abovebar{
+        flex-direction: column;
+        gap: 23px;
+        align-items: centre;
+        
+    }
 }

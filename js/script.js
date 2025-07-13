@@ -2,13 +2,15 @@ let currentSong = new Audio(); // global audio object
 let currentIndex = 0;
 let songs = [];
 
-const playMusic = (track,pause=false) => {
+const playMusic = (track, autoPlay = true) => {
     currentSong.src = "/songs/" + track;
-    if(pause){
-        currentSong.play()
-        play.src = "img/play.svg"
-    }
 
+    if (autoPlay) {
+        currentSong.play();
+        document.getElementById("play").src = "img/pause.svg";
+    } else {
+        document.getElementById("play").src = "img/play.svg";
+    }
 
     document.querySelector(".songinfo").innerHTML = decodeURI(track);
     document.querySelector(".songtime").innerHTML = "00:00/00:00";
@@ -30,7 +32,7 @@ async function getSongs() {
     }
 
     return songs;
-};
+}
 
 function secondsToMinutesSeconds(seconds) {
     let mins = Math.floor(seconds / 60);
@@ -40,8 +42,8 @@ function secondsToMinutesSeconds(seconds) {
 
 async function main() {
     songs = await getSongs();
-    playMusic(songs[0],true)
-
+    currentIndex = 0;
+    playMusic(songs[currentIndex], true);
 
     let songUL = document.querySelector(".songList ul");
     songUL.innerHTML = "";
@@ -58,7 +60,6 @@ async function main() {
             <img src="img/play.svg" alt="play" class="play-group">
         `;
 
-        // Play this song on click
         li.addEventListener("click", () => {
             currentIndex = index;
             playMusic(song);
@@ -91,22 +92,30 @@ async function main() {
         playMusic(songs[currentIndex]);
     });
 
-    // Optional: auto-load first song
-    currentSong.src = "/songs/" + songs[0];
-    currentIndex = 0;
+    // Time update
+    currentSong.addEventListener("timeupdate", () => {
+        document.querySelector(".songtime").innerHTML =
+            `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
 
-   //listen for time update event
-    
-currentSong.addEventListener("timeupdate", () => {
-    console.log(currentSong.currentTime, currentSong.duration);
+        let percent = (currentSong.currentTime / currentSong.duration) * 100;
+        document.querySelector(".circle").style.left = percent + "%";
+    });
 
-    document.querySelector(".songtime").innerHTML =
-        `${secondsToMinutesSeconds(currentSong.currentTime)}/${secondsToMinutesSeconds(currentSong.duration)}`;
+    // Seekbar click
+    document.querySelector(".seekbar").addEventListener("click", e => {
+        let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
+        document.querySelector(".circle").style.left = percent + "%";
+        currentSong.currentTime = (currentSong.duration * percent) / 100;
+    });
 
-    let percent = (currentSong.currentTime / currentSong.duration) * 100;
-    document.querySelector(".circle").style.left = percent + "%";
-});
+    // Hamburger menu
+    document.querySelector(".hamburger").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "0";
+    });
 
+    document.querySelector(".close").addEventListener("click", () => {
+        document.querySelector(".left").style.left = "-110%";
+    });
 }
 
 main();
